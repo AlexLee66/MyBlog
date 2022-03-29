@@ -1,0 +1,101 @@
+<form [formGroup]="form" 
+    style="width: 50%;
+    margin: 0 auto;"
+>
+    <h1 class="h3 mb-3 fw-normal text-center">
+        Добавление нового блога
+    </h1>
+
+    <div class="form-floating mb-3">
+        <h2>Категория</h2>
+        <select name="category" id="category" formControlName="category">
+            <option value="Политика">Политика</option>
+            <option value="Наука">Наука</option>
+            <option value="Жизнь">Жизнь</option>
+            <option value="Люди">Люди</option>
+            <option value="Спорт">Спорт</option>
+        </select>
+        <div class="validation" 
+        *ngIf="f['category'].touched && f['category'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['category'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input class="form-control" type="text" formControlName="name"
+             id="name" 
+        placeholder="Название: "
+        >
+        <label for="email">Название статьи:</label>
+        <div class="validation" 
+        *ngIf="f['name'].touched && f['name'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['name'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div>
+
+    <div class="form-floating mb-3">
+        <h2>Фото</h2>
+        <quill-editor formControlName="photo"></quill-editor>
+        <div class="validation" 
+        *ngIf="f['photo'].touched && f['photo'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['photo'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div>
+
+    <div class="form-floating mb-3">
+        <h2>Текст статьи</h2>
+        <quill-editor formControlName="desc"></quill-editor>
+        <div class="validation" 
+        *ngIf="f['desc'].touched && f['desc'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['desc'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div>
+
+    <!-- <div class="form-floating mb-3">
+        <input class="form-control" type="text" formControlName="price"
+             id="price" 
+        placeholder="Цена: "
+        >
+        <label for="email">Цена:</label>
+        <div class="validation" 
+        *ngIf="f['price'].touched && f['price'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['price'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div> -->
+
+    <div class="form-floating mb-3">
+        <input class="form-control" type="text" formControlName="author"
+             id="author" 
+        placeholder="Автор: "
+        >
+        <label for="email">Автор текста:</label>
+        <div class="validation" 
+        *ngIf="f['author'].touched && f['author'].errors">
+            <small class="text-danger form-text" 
+            *ngIf="f['author'].errors['required']">
+                Поле обязательно для ввода
+            </small>
+        </div>
+    </div>
+
+    <button [disabled]="submitted || form.invalid" 
+            class="w100 btn btn-primary"
+            (click)="submit()">
+            Добавить
+    </button>
+</form>

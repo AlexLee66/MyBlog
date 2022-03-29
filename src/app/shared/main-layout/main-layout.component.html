@@ -1,0 +1,42 @@
+<header 
+class="d-flex 
+justify-content-between 
+flex-column 
+flex-md-row 
+align-items-center 
+p-3 
+px-md-4 
+mb-3 
+text-muted
+text-opacity-75
+bg-secondary
+bg-opacity-10
+border-bottom 
+shadow-md">
+    <p routerLink="" 
+    style="color: rgb(91, 121, 155); cursor: pointer" 
+    class="h2 my-0 me-md-auto fw-bold">Info Blog</p>
+
+    <div class="pe-3 form-floating ">
+        <input type="search" class="pe-2 form-control" placeholder="Поиск по наименованию:" id="search" [(ngModel)]="productName">
+        <label for="search">Поиск по наименованию:</label>
+    </div>
+
+    <nav class="my-2 my-md-0 me-md-3">
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('', $event)">Все статьи</a>
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('Политика', $event)">Политика</a>
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('Наука', $event)">Наука</a>
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('Жизнь', $event)">Жизнь</a>
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('Люди', $event)">Люди</a>
+        <a class="h4 p-3 anchor text-dark"  (click)="setType('Спорт', $event)">Спорт</a>
+    </nav>
+
+    <!-- <button class="btn btn-outline-primary"routerLink="/cart" (click)="setType('Корзина')">Корзина 
+        <span class="badge rounded-pill bg-danger new" *ngIf="productsServ.productCounter">{{ productsServ.productCounter }}</span>
+    </button> -->
+</header>
+<router-outlet></router-outlet>
+<section class=" row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3" style="width: 90%; margin: 0 auto;">
+    <app-product [Product]="p" *ngFor="let p of products | async | sorting : productsServ.type | search : productName" class="col"></app-product>
+</section>
+

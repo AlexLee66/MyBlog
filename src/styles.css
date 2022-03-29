@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~quill/dist/quill.snow.css';
+
+.ql-editor > p > img {
+    display: block;
+    /* min-height: 250px; */
+     
+    /* max-height: 250px; */
+    min-height: 250px;
+    margin: 0 auto;
+    /* margin: 0 auto; */
+}
+.card {
+    position: relative;
+    max-height: 620px;
+    min-height: 620px;
+}
+.card button.btn {
+
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+
+}
+
+.ql-editor > p {
+    display: flex;
+}
